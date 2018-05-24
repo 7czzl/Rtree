@@ -28,6 +28,9 @@
 #define RTREE_DONT_USE_MEMPOOLS // This version does not contain a fixed memory allocator, fill in lines with EXAMPLE to implement one.
 #define RTREE_USE_SPHERICAL_VOLUME // Better split classification, may be slower on some systems
 
+long long int num = 0;    //record the disk access number
+long long int last = num;  //record the last disk access number
+
 // Fwd decl
 class RTFileStream;  // File I/O helper class, look below for implementation and notes.
 
@@ -1568,10 +1571,10 @@ bool RTREE_QUAL::Search(Node* a_node, Rect* a_rect, int& a_foundCount, bool __cd
 	{
 		for (int index = 0; index < a_node->m_count; ++index)
 		{
+			num++;
 			if (Overlap(a_rect, &a_node->m_branch[index].m_rect))
 			{
 				DATATYPE& id = a_node->m_branch[index].m_data;
-
 				// NOTE: There are different ways to return results.  Here's where to modify
 				if (&a_resultCallback)
 				{

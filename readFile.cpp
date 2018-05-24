@@ -2,7 +2,6 @@
 #include<string>
 #include<fstream>
 #include<sstream>
-#include<vector>
 #include"readFile.h"
 using namespace std;
 
