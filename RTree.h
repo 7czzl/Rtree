@@ -29,7 +29,6 @@
 #define RTREE_USE_SPHERICAL_VOLUME // Better split classification, may be slower on some systems
 
 long long int num = 0;    //record the disk access number
-long long int last = num;  //record the last disk access number
 
 // Fwd decl
 class RTFileStream;  // File I/O helper class, look below for implementation and notes.
